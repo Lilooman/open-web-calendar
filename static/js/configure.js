@@ -151,6 +151,10 @@ function loadCalendar() {
     };
     dhtmlXTooltip.config.delta_x = 0;
     dhtmlXTooltip.config.delta_y = 0;
+    //config
+    scheduler.config.first_hour = 7;
+    scheduler.config.last_hour = 20;
+    scheduler.config.start_on_monday = true;
     // quick info
     scheduler.templates.quick_info_title = function(start, end, event){
         return template.summary(event);
