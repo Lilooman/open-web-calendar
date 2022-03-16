@@ -138,6 +138,14 @@ function loadCalendar() {
     // use UTC, see https://docs.dhtmlx.com/scheduler/api__scheduler_server_utc_config.html
     scheduler.config.server_utc = true;
     scheduler.config.readonly = true;
+    //config
+    scheduler.config.first_hour = 7;
+    scheduler.config.last_hour = 20;
+    scheduler.config.start_on_monday = true;
+    scheduler.ignore_week = function(date){
+    if (date.getDay() == 6 || date.getDay() == 0) //hides Saturdays and Sundays
+        return true;
+    };
     scheduler.init('scheduler_here', new Date(), specification["tab"]);
 
     // event in the calendar
@@ -151,14 +159,7 @@ function loadCalendar() {
     };
     dhtmlXTooltip.config.delta_x = 0;
     dhtmlXTooltip.config.delta_y = 0;
-    //config
-    scheduler.config.first_hour = 7;
-    scheduler.config.last_hour = 20;
-    scheduler.config.start_on_monday = true;
-    scheduler.ignore_week = function(date){
-    if (date.getDay() == 6 || date.getDay() == 0) //hides Saturdays and Sundays
-        return true;
-    };
+
     // quick info
     scheduler.templates.quick_info_title = function(start, end, event){
         return template.summary(event);
