@@ -2,6 +2,7 @@ Open Web Calendar
 =================
 
 [![Build Status](https://travis-ci.org/niccokunzmann/open-web-calendar.svg?branch=master)](https://travis-ci.org/niccokunzmann/open-web-calendar)
+[![Support on Open Collective](https://img.shields.io/opencollective/all/open-web-calendar?label=support%20on%20open%20collective)](https://opencollective.com/open-web-calendar/)
 **[Try it out][web]**
 
 There are several commercial solutions which allow embedding of calendars into my website.
@@ -92,9 +93,32 @@ see the [app.json] file.
 
 [web]: https://openwebcalendar.herokuapp.com/
 
+### Updating Dependencies
+
+You can update the packages to the latest version:
+```
+rm requirements.txt test-requirements.txt
+pip install --upgrade pip-tools -r requirements.in -r test-requirements.in
+pip-compile -o requirements.txt requirements.in
+pip-compile -o test-requirements.txt test-requirements.in
+```
+
+And run the tests:
+```
+pytest
+```
+
+Changelog
+---------
+
+- v1.0
+  - Create the changelog.
+  - Add support for colors from ICS calendars, see [Issue #52](https://github.com/niccokunzmann/open-web-calendar/issues/52) and [Pull Request 88](https://github.com/niccokunzmann/open-web-calendar/pull/88).
+
 Related Work
 ------------
 
+- [docker-ics-view](https://github.com/11notes/docker-ics-view) and [its Docker image](https://hub.docker.com/r/11notes/ics-view) - a fork of this project with further improvements
 - [calender_merger](https://github.com/niccokunzmann/calender_merger) for merging several ICAL files into one
 - [ical-filter](https://github.com/thoka/ical-filter) for filtering events in an ICAL file and providing the selection as file
 - [Wordpress all in one event calendar](https://wordpress.org/plugins/all-in-one-event-calendar/)
